@@ -1,4 +1,4 @@
-package de.svenlogan.wordpress.args4j;
+package de.rolandkluge.blog.java.args4jtut;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -9,8 +9,20 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
-public class Application
+/**
+ * Tiny application showcasing the core abilities of Args4J.
+ *
+ * @author Roland Kluge
+ *
+ */
+public class Args4JTutorial
 {
+
+    public static void main(final String[] args)
+    {
+        final Args4JTutorial application = new Args4JTutorial();
+        application.configure(args);
+    }
 
     @Option(name = "-o", aliases = "--output", required = true, usage = "Target/output file")
     private File outputFile;
@@ -28,7 +40,7 @@ public class Application
     /**
      * Configure application and return an appropriate exit code in order to signal if an error
      * occurred or the application shall be terminated as only the help message has been printed.
-     * 
+     *
      * @param args
      *            the program options
      * @return the "exit code" of the paring process
@@ -67,12 +79,6 @@ public class Application
         System.err.println("Configuration: " + this.configurationParameters);
 
         return 0;
-    }
-
-    public static void main(final String[] args)
-    {
-        final Application application = new Application();
-        application.configure(args);
     }
 
 }
